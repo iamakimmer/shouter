@@ -1,7 +1,12 @@
 Shouter::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
+
+  resource :dashboard, only: [:show] #dashboard is singleton resource
+
   root to: 'homes#show', via: :get
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
+
+  resources :shouts, only: [:create, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
